@@ -1,0 +1,7 @@
+> mkvirtualenv androdev
+> pip install uiautomator
+
+* set path on the environment as
+	` System variables > Path > C:\Users\SkSaddy\AppData\Local\Android\Sdk\platform-tools
+	` System variables > ANDROID_HOME: C:\Users\SkSaddy\AppData\Local\Android\Sdk
+

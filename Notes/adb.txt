@@ -1,0 +1,15 @@
+
+Installed package names on your connected device:
+> adb shell pm list packages
+
+Finding appPackage Name and Activity:
+> adb shell dumpsys window windows | find "com.example.login"
+		:: here [com.example.login] is my package name i.e. "package:com.example.login"
+
+Find path of the installed package:
+> adb shell pm path [com.example.login]
+
+
+-- OR --
+
+Use "Apk Info" an android application to get these details.

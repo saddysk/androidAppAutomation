@@ -1,0 +1,63 @@
+package appiumtests;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.apache.commons.validator.EmailValidator;
+import org.openqa.selenium.By;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+
+public class Login {
+//	initializing the the driver
+	static AndroidDriver<MobileElement> driver;
+
+//	driver function
+	public static void main(String[] args) {
+//		starting the working function
+		try {
+			System.out.println("try block");
+			openLoginApp();
+		} catch (Exception e) {
+			System.out.println("catch block");
+			System.out.println(e.getCause());
+			System.out.println("MESSAGE: " + e.getMessage());
+		}		
+	}
+	
+//	functional method
+	public static void openLoginApp() throws Exception {
+		
+		DesiredCapabilities cap = new DesiredCapabilities();
+//		set desired capabilities to interact with the application
+		cap.setCapability("deviceName", "realme 6");
+		cap.setCapability("udid", "IVU8DYUGOFZL9TTK");
+		cap.setCapability("platformName", "Android");
+		cap.setCapability("platformVersion", "10");
+		
+		cap.setCapability("appPackage", "com.example.login");
+		cap.setCapability("appActivity", "com.example.login.MainActivity");
+
+//		setting url of the appium server
+		URL url = new URL("http://localhost:4723/wd/hub");
+		System.out.println("Setting up the driver...");
+		driver = new AndroidDriver<MobileElement>(url, cap);
+		System.out.println("Application started.");
+		
+//		getting the elements to invoke actions
+		MobileElement emaiId = driver.findElement(By.id("com.example.login:id/editTextTextEmailAddress"));
+		MobileElement password = driver.findElement(By.id("com.example.login:id/editTextTextPassword"));
+		MobileElement loginBtn = driver.findElement(By.id("com.example.login:id/button"));
+		MobileElement op = driver.findElement(By.id("com.example.login:id/textView"));
+
+		emaiId.setValue("emmakutcshi");
+		password.setValue("xkiboonshi");
+		loginBtn.click();
+		String output = op.getText();
+		
+		
+	}
+
+}
